@@ -19,12 +19,33 @@
 {% endblock %}
 
 {% block B2 %}
-<form action="" method="post">
-    {% csrf_token %}
-    
-    {{form.as_p }}
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <h2>Formulario Usuario:</h2>
+        <br>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
 
-    <input type="submit" value="Crear">
-</form>
+                <div class="card">
+                    <div class="card-header text-center">
+                        
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <p> Nombre: <input type="text" name="nombre"></p>
+        
+                            <p> Mail: <input type= "number" name="mail"></p>
+                    
+                            <p> Fecha de Nacimiento: <input type= "date" name="nacimiento"></p>
+
+                            <input type="submit" class="btn btn-primary" value="Guardar Usuario">
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
-

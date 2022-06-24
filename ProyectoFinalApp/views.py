@@ -24,7 +24,7 @@ def creaUsuarios(request):
             
             info = formulario.cleaned_data
 
-            usuario = Usuario(nombre=info["nombre"],email=info["email"],nacimiento=info["nacimiento"]) # Error aca
+            usuario = Usuario(nombre=info["nombre"],mail=info["mail"],nacimiento=info["nacimiento"])
             usuario.save()
 
             return redirect("crearUsuarios")

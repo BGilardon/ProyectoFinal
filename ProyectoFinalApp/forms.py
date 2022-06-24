@@ -2,11 +2,12 @@ from django import forms
 
 
 
+
+
 class crearUsuario(forms.Form):
     nombre = forms.CharField(max_length=30)
     mail = forms.EmailField()
     nacimiento = forms.DateField()
-
 
 class crearPosteo(forms.Form):
     titulo = forms.CharField(max_length=20)
