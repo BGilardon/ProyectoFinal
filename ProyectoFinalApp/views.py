@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from django.db.models import Q
+
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 
 # Create your views here.
 
@@ -12,13 +16,15 @@ def inicio(request):
 
 def usuarios(request):
     
-    return render(request,'usuarios.html')
+    usuarios = Usuario.objects.all()
+    
+    return render(request,'usuarios.html', {'usuarios':usuarios})
 
-def creaUsuarios(request):
+def usuariosCrear(request):
         # post
     if request.method == "POST":
         
-        formulario = crearUsuario(request.POST)
+        formulario = usuarioCrear(request.POST)
 
         if formulario.is_valid():
             
@@ -27,17 +33,32 @@ def creaUsuarios(request):
             usuario = Usuario(nombre=info["nombre"],mail=info["mail"],nacimiento=info["nacimiento"])
             usuario.save()
 
-            return redirect("crearUsuarios")
+            return redirect("usuariosCrear")
 
-        return render(request,"crearUsuarios.html",{"form":formulario})
+        return render(request,"usuariosCrear.html",{"form":formulario})
 
     # get
-    formulario = crearUsuario()
-    return render(request,"crearUsuarios.html",{"form":formulario})
+    formulario = usuarioCrear()
+    return render(request,"usuariosCrear.html",{"form":formulario})
 
 
-def buscarUsuario(request):
-    pass
+def usuariosBuscar(request):
+    
+    if request.method == "POST":
+
+        search = request.POST["search"]
+
+        if search != "":
+            usuarios = Usuario.objects.filter( Q(nombre__icontains=search) | Q(nacimiento__icontains=search) ).values()
+
+            return render(request,"usuariosBuscar.html",{"usuarios":usuarios, "search":True, "busqueda":search})
+
+    else:
+        
+        usuarios = Usuario.objects.all()
+
+        return render(request,"usuariosBuscar.html",{"usuarios":usuarios, "search":False})
+
 
 
 

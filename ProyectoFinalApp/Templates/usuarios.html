@@ -9,12 +9,48 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="{% url 'usuarios' %}">Usuarios</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'crearUsuario' %}">Crear</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Boton3</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'usuariosCrear' %}">Crear</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'usuariosBuscar' %}">Buscar</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
             </ul>
         </div>
     </div>
 </nav>
+{% endblock %}
+
+
+
+{% block B2 %}
+<section class="bg-light py-5">
+    <section class="bg-light py-5">
+        <div class="container px-5">
+            <h1>Nuestros usuarios:</h1>
+            <br>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-10 table-responsive">
+                    <table class="table table-theme">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Fecha de Nacimiento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in usuarios %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td>{{user.nombre}}</td>
+                                    <td>{{user.mail}}</td>
+                                    <td>{{user.nacimiento}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 

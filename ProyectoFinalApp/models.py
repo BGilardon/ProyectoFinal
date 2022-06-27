@@ -6,7 +6,7 @@ from django.db import models
 
 class Usuario(models.Model):
     nombre = models.CharField(max_length=30)
-    mail = models.EmailField()
+    mail = models.EmailField(blank=True, null=True)
     nacimiento = models.DateField()
 
 class Posteo(models.Model):
