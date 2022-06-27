@@ -12,6 +12,9 @@ def inicio(request):
     
     return render(request,'index.html')
 
+def redirec(request):
+    return render(request, 'redirec.html')
+
 
 
 def usuarios(request):
