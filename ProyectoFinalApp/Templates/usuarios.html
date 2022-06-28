@@ -27,30 +27,23 @@
 <section class="bg-light py-5">
     <section class="bg-light py-5">
         <div class="container px-6">
-            <h1>Usuarios:</h1>
             <div class="row gx-5justify-content-center">
-                
-                    {% for user in usuarios %}
-                    <label class="list-group-item d-flex gap-3">
-                    <span class="pt-1 form-checked-content">
-                        <strong>{{user.nombre}}</strong>
-                        <small class="d-block text-muted">
-                            <tr>
-                                <p>{{user.mail}}
-                                <br>{{user.nacimiento}}</p>
-                            </tr>
-                        </small>
-                    </span>
-                    </label>
-                    {% endfor %}
-                
+            <h1>Usuarios:</h1>
+                {% for user in usuarios %}
+                <label class="list-group-item d-flex gap-3">
+                <span class="pt-1 form-checked-content">
+                    <strong>{{user.nombre}}</strong>
+                    <small class="d-block text-muted">
+                        <tr>
+                            <p>{{user.mail}}
+                            <br>{{user.nacimiento}}</p>
+                        </tr>
+                    </small>
+                </span>
+                </label>
+                {% endfor %}
             </div>
         </div>
     </section>
 </section>
 {% endblock %}
-
-
-<div class="container px-6">
-    <div class="row gx-5justify-content-center">
-         <div class="col-lg-3">
