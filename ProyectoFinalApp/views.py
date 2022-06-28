@@ -3,11 +3,9 @@ from .models import *
 from .forms import *
 from django.db.models import Q
 
-from django.views.generic import ListView
-from django.views.generic.detail import DetailView
-
 # Create your views here.
 
+# Inicio
 def inicio(request):
     
     return render(request,'index.html')
@@ -16,12 +14,14 @@ def redirec(request):
     return render(request, 'redirec.html')
 
 
-
+# Usuarios
 def usuarios(request):
     
     usuarios = Usuario.objects.all()
     
     return render(request,'usuarios.html', {'usuarios':usuarios})
+
+
 
 def usuariosCrear(request):
         # post
@@ -56,6 +56,12 @@ def usuariosBuscar(request):
 
             return render(request,"usuariosBuscar.html",{"usuarios":usuarios, "search":True, "busqueda":search})
 
+        else:
+        
+            usuarios = Usuario.objects.all()
+
+            return render(request,"usuariosBuscar.html",{"usuarios":usuarios, "search":False})
+    
     else:
         
         usuarios = Usuario.objects.all()
@@ -64,6 +70,7 @@ def usuariosBuscar(request):
 
 
 
+# Posteos
 
 def posteos(request):
     
@@ -76,6 +83,7 @@ def buscarPosteos(request):
     pass
 
 
+# Moderadores
 
 def moderadores(request):
     

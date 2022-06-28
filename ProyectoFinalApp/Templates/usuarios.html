@@ -26,34 +26,31 @@
 {% block B2 %}
 <section class="bg-light py-5">
     <section class="bg-light py-5">
-        <div class="container px-5">
-            <h1>Nuestros usuarios:</h1>
-            <br>
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-10 table-responsive">
-                    <table class="table table-theme">
-                        <thead>
+        <div class="container px-6">
+            <h1>Usuarios:</h1>
+            <div class="row gx-5justify-content-center">
+                
+                    {% for user in usuarios %}
+                    <label class="list-group-item d-flex gap-3">
+                    <span class="pt-1 form-checked-content">
+                        <strong>{{user.nombre}}</strong>
+                        <small class="d-block text-muted">
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Fecha de Nacimiento</th>
+                                <p>{{user.mail}}
+                                <br>{{user.nacimiento}}</p>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {% for user in usuarios %}
-                                <tr>
-                                    <th scope="row">{{forloop.counter}}</th>
-                                    <td>{{user.nombre}}</td>
-                                    <td>{{user.mail}}</td>
-                                    <td>{{user.nacimiento}}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                        </small>
+                    </span>
+                    </label>
+                    {% endfor %}
+                
             </div>
         </div>
     </section>
+</section>
 {% endblock %}
 
+
+<div class="container px-6">
+    <div class="row gx-5justify-content-center">
+         <div class="col-lg-3">
