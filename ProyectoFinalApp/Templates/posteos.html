@@ -12,11 +12,36 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#">Boton1</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Boton2</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Boton3</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'posteos' %}">Posteos</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'crearPosteos' %}">Crear</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'buscarPosteos' %}">Buscar</a></li>
             </ul>
         </div>
     </div>
 </nav>
 {% endblock %}
+
+{% block B2 %}
+<section class="bg-light py-5">
+    <section class="bg-light py-5">
+        <div class="container px-6">
+            <div class="row gx-5justify-content-center">
+            <h3>Posteos:</h3>
+                {% for post in posteos %}
+                <label class="list-group-item d-flex gap-3">
+                <span class="pt-1 form-checked-content">
+                    <strong>{{post.titulo}}</strong>
+                    <small class="d-block text-muted">
+                        <tr>
+                        <p>{{post.cuerpo}}</p>
+                        </tr>
+                    </small>
+                </span>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</section>
+{% endblock %}
+
